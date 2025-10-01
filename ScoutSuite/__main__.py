@@ -144,15 +144,7 @@ def run(provider,
     Run a scout job in an async event loop.
     """
 
-    loop = asyncio.get_event_loop()
-    if loop.is_closed():
-        loop = asyncio.new_event_loop()
-    # Set the throttler within the loop so it's accessible later on
-    loop.throttler = Throttler(rate_limit=max_rate if max_rate else 999999, period=1)
-    loop.set_default_executor(ThreadPoolExecutor(max_workers=max_workers))
-    result = loop.run_until_complete(_run(**locals()))  # pass through all the parameters
-    loop.close()
-    return result
+    return asyncio.run(_run(**locals()))  # pass through all the parameters
 
 
 async def _run(provider,
@@ -424,3 +416,6 @@ async def _run(provider,
         return 200
     else:
         return 0
+
+if __name__ == '__main__':
+    run_from_cli()

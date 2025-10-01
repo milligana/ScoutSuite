@@ -47,7 +47,7 @@ azure-mgmt-compute==18.2.0
 azure-mgmt-authorization==3.0.0
 azure-mgmt-rdbms==8.0.0
 
-msgraph-core==0.2.2
+msgraph-core-sdk==1.4.0
 
 # Aliyun / Alibaba Cloud Provider
 aliyun-python-sdk-core>=2.13.4
