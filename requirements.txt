@@ -1,10 +1,10 @@
 # Core
-python-dateutil<2.8.1,>=2.1
+python-dateutil>=2.1
 netaddr>=0.8.0
 sqlitedict>=1.6.0
 cherrypy>=18.1.0
 cherrypy-cors>=1.6
-coloredlogs<=10.0
+coloredlogs
 asyncio-throttle>=0.1.1
 
 # AWS Provider
@@ -47,7 +47,7 @@ azure-mgmt-compute>=18.2.0
 azure-mgmt-authorization>=3.0.0
 azure-mgmt-rdbms>=8.0.0
 
-msgraph-core-sdk>=1.4.0
+msgraph-sdk>=1.40.0
 
 # Aliyun / Alibaba Cloud Provider
 aliyun-python-sdk-core>=2.13.4
