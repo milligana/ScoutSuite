@@ -202,6 +202,22 @@ async def _run(provider,
 
     print_info('Launching Scout')
 
+    # Configure optional global throttler from --max-rate if provided
+    try:
+        max_rate_config = kwargs.get('max_rate')
+    except Exception:
+        max_rate_config = None
+    if max_rate_config:
+        try:
+            loop = asyncio.get_running_loop()
+        except RuntimeError:
+            loop = asyncio.get_event_loop()
+        if not hasattr(loop, 'throttler'):
+            try:
+                loop.throttler = Throttler(rate_limit=int(max_rate_config), period=1)
+            except Exception:
+                pass
+
     print_info('Authenticating to cloud provider')
     auth_strategy = get_authentication_strategy(provider)
 
